@@ -69,7 +69,7 @@ def init_db():
         conn.execute(
             "INSERT INTO users(name,email,password,role) VALUES(?,?,?,?)",
             ("EcoConnect Admin", "admin@ecoconnect.com",
-             generate_password_hash("admin123"), "admin")
+             generate_password_hash("admin786787"), "admin")
         )
 
     # Create sample activities
