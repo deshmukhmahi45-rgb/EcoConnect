@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+<h2>Create EcoConnect Account</h2>
+<form method="POST">
+    <label>Full Name</label>
+    <input name="name" required>
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <label>Password</label>
+    <input type="password" name="password" minlength="6" required>
+    <button class="btn">Create Account</button>
+</form>
+</div>
+{% endblock %}

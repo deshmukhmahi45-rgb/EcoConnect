@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>🛠 Admin Dashboard</h1>
+<p>Verify environmental reports, update their status and manage activities.</p>
+
+<h2>Reported Environmental Issues</h2>
+<div class="table-wrap">
+<table>
+<tr><th>ID</th><th>Reporter</th><th>Issue</th><th>Location</th><th>Photo</th><th>Status</th></tr>
+{% for i in issues %}
+<tr>
+<td>#{{ i['id'] }}</td>
+<td>{{ i['reporter'] }}</td>
+<td><b>{{ i['title'] }}</b><br>{{ i['description'] }}</td>
+<td>{{ i['location'] }}{% if i['latitude'] %}<br>{{ i['latitude'] }}, {{ i['longitude'] }}{% endif %}</td>
+<td>{% if i['image'] %}<a href="{{ url_for('uploaded_file', filename=i['image']) }}" target="_blank">View</a>{% else %}—{% endif %}</td>
+<td>
+<form method="POST" action="{{ url_for('update_status', issue_id=i['id']) }}">
+<select name="status" onchange="this.form.submit()">
+{% for s in ['Pending','In Progress','Resolved'] %}
+<option {% if i['status']==s %}selected{% endif %}>{{ s }}</option>
+{% endfor %}
+</select>
+</form>
+</td>
+</tr>
+{% else %}
+<tr><td colspan="6">No reports yet.</td></tr>
+{% endfor %}
+</table>
+</div>
+
+<h2>Add Community Activity</h2>
+<div class="form-card wide">
+<form method="POST" action="{{ url_for('add_activity') }}">
+<div class="two">
+<div><label>Activity Name</label><input name="title" required></div>
+<div><label>Points</label><input type="number" name="points" min="1" value="20" required></div>
+</div>
+<label>Description</label><textarea name="description" required></textarea>
+<div class="two">
+<div><label>Date</label><input type="date" name="date" required></div>
+<div><label>Location</label><input name="location" required></div>
+</div>
+<button class="btn">Add Activity</button>
+</form>
+</div>
+
+<h2>Registered Users</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Name</th><th>Email</th><th>Green Points</th><th>Joined</th></tr>
+{% for u in users %}
+<tr><td>{{ u['name'] }}</td><td>{{ u['email'] }}</td><td>{{ u['points'] }}</td><td>{{ u['created_at'] }}</td></tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

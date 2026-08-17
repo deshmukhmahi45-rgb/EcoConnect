@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>🏆 Green Points Leaderboard</h1>
+<p>Community members are rewarded for verified environmental participation.</p>
+<div class="card">
+{% for u in users %}
+<div class="rank">
+    <span>#{{ loop.index }}</span>
+    <b>{{ u['name'] }}</b>
+    <strong>{{ u['points'] }} Green Points</strong>
+</div>
+{% else %}
+<p>No users yet.</p>
+{% endfor %}
+</div>
+{% endblock %}

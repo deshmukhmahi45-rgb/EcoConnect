@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="tag">COMMUNITY × TECHNOLOGY × ENVIRONMENT</p>
+        <h1>Protect our environment,<br><span>one action at a time.</span></h1>
+        <p>Report local environmental problems, join green activities and earn Green Points while helping your community.</p>
+        <div class="hero-buttons">
+            <a class="btn" href="{{ url_for('report') }}">Report an Issue</a>
+            <a class="btn secondary" href="{{ url_for('dashboard') }}">Join Activities</a>
+        </div>
+    </div>
+    <div class="hero-card">🌍<br><strong>EcoConnect</strong><br><small>Make your community greener.</small></div>
+</section>
+
+<section class="stats">
+    <div><strong>{{ issue_count }}</strong><span>Issues Reported</span></div>
+    <div><strong>{{ resolved_count }}</strong><span>Issues Resolved</span></div>
+    <div><strong>{{ activities|length }}</strong><span>Featured Activities</span></div>
+</section>
+
+<h2>Community Activities</h2>
+<div class="grid">
+{% for a in activities %}
+    <div class="card">
+        <span class="badge">+{{ a['points'] }} points</span>
+        <h3>{{ a['title'] }}</h3>
+        <p>{{ a['description'] }}</p>
+        <p>📅 {{ a['date'] }} &nbsp; 📍 {{ a['location'] }}</p>
+    </div>
+{% endfor %}
+</div>
+
+<h2>Top Green Citizens</h2>
+<div class="card">
+{% for u in leaderboard %}
+    <div class="rank"><span>#{{ loop.index }}</span><b>{{ u['name'] }}</b><strong>{{ u['points'] }} pts</strong></div>
+{% else %}
+    <p>No users yet. Be the first!</p>
+{% endfor %}
+</div>
+{% endblock %}

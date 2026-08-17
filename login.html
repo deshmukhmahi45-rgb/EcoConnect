@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+<h2>Login</h2>
+<form method="POST">
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <button class="btn">Login</button>
+</form>
+<p class="hint">Admin demo: admin@ecoconnect.com / admin123</p>
+</div>
+{% endblock %}

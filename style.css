@@ -1,0 +1,135 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f8f4;
+    color: #17251a;
+}
+.navbar {
+    background: #123d25;
+    color: white;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand { color: white; text-decoration: none; font-size: 23px; font-weight: 800; }
+.navlinks { display: flex; align-items: center; gap: 18px; }
+.navlinks a { color: white; text-decoration: none; }
+.container { width: 86%; max-width: 1200px; margin: 35px auto; min-height: 78vh; }
+.hero {
+    background: linear-gradient(120deg, #dff3df, #f6fff5);
+    border-radius: 24px;
+    padding: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero h1 { font-size: 48px; margin: 10px 0; }
+.hero h1 span { color: #198754; }
+.hero p { max-width: 650px; font-size: 18px; line-height: 1.6; }
+.hero-card {
+    background: white;
+    border-radius: 24px;
+    padding: 50px;
+    text-align: center;
+    font-size: 55px;
+    box-shadow: 0 10px 30px #0001;
+}
+.hero-card strong { font-size: 25px; }
+.hero-card small { display: block; font-size: 14px; }
+.tag { color: #198754; font-weight: 800; letter-spacing: 1px; }
+.hero-buttons { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+.btn {
+    border: 0;
+    background: #198754;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+}
+.btn.secondary { background: #123d25; }
+.btn.small { padding: 8px 12px; }
+.btn.disabled { opacity: .6; }
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+    margin: 25px 0 40px;
+}
+.stats div, .card, .form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 5px 20px #0000000c;
+}
+.stats div { text-align: center; }
+.stats strong { display: block; font-size: 35px; color: #198754; }
+.stats span { color: #667; }
+.grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+.card { margin-bottom: 15px; }
+.badge {
+    background: #dff3df;
+    color: #17633a;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.rank {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+.rank span { font-weight: bold; width: 35px; }
+.rank b { flex: 1; }
+.rank strong { color: #198754; }
+.form-card { max-width: 600px; margin: 30px auto; }
+.form-card.wide { max-width: 850px; }
+form { display: flex; flex-direction: column; gap: 10px; }
+label { font-weight: 700; margin-top: 8px; }
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd6cc;
+    border-radius: 8px;
+    font: inherit;
+}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.alert { padding: 13px 18px; border-radius: 8px; margin-bottom: 15px; }
+.alert.success { background: #dff5e5; color: #155724; }
+.alert.danger { background: #f8d7da; color: #721c24; }
+.alert.info { background: #d9edf7; color: #0c5460; }
+.hint { color: #667; font-size: 14px; }
+.dashboard-head { display: flex; justify-content: space-between; align-items: center; }
+.points {
+    background: #123d25;
+    color: white;
+    border-radius: 18px;
+    padding: 22px 30px;
+    font-size: 30px;
+    font-weight: 800;
+}
+.points small { display: block; font-size: 13px; font-weight: normal; }
+.table-wrap { overflow-x: auto; background: white; border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 14px; border-bottom: 1px solid #eee; text-align: left; vertical-align: top; }
+th { background: #eaf4eb; }
+.status { padding: 5px 9px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.status.pending { background: #fff3cd; }
+.status.in-progress { background: #cfe2ff; }
+.status.resolved { background: #d1e7dd; }
+footer { text-align: center; padding: 25px; color: #667; }
+@media(max-width:800px) {
+    .hero { padding: 30px; flex-direction: column; align-items: flex-start; }
+    .hero h1 { font-size: 35px; }
+    .hero-card { margin-top: 20px; }
+    .grid, .stats, .two { grid-template-columns: 1fr; }
+    .navbar { flex-direction: column; gap: 15px; }
+    .navlinks { flex-wrap: wrap; justify-content: center; }
+}

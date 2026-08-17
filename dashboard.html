@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="dashboard-head">
+    <div>
+        <p class="tag">WELCOME</p>
+        <h1>{{ current_user['name'] }}</h1>
+        <p>Keep contributing to a cleaner community.</p>
+    </div>
+    <div class="points">🌿 {{ current_user['points'] }}<small>Green Points</small></div>
+</section>
+
+<div class="hero-buttons">
+    <a class="btn" href="{{ url_for('report') }}">+ Report Environmental Issue</a>
+</div>
+
+<h2>My Reported Issues</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Issue</th><th>Location</th><th>Status</th><th>Date</th></tr>
+{% for i in issues %}
+<tr>
+<td>{{ i['title'] }}</td>
+<td>{{ i['location'] }}</td>
+<td><span class="status {{ i['status'].replace(' ','-').lower() }}">{{ i['status'] }}</span></td>
+<td>{{ i['created_at'] }}</td>
+</tr>
+{% else %}
+<tr><td colspan="4">No issues reported yet.</td></tr>
+{% endfor %}
+</table>
+</div>
+
+<h2>Environmental Activities</h2>
+<div class="grid">
+{% for a in activities %}
+<div class="card">
+<span class="badge">+{{ a['points'] }} points</span>
+<h3>{{ a['title'] }}</h3>
+<p>{{ a['description'] }}</p>
+<p>📅 {{ a['date'] }}<br>📍 {{ a['location'] }}</p>
+{% if a['id'] in joined %}
+<button class="btn disabled" disabled>Joined ✓</button>
+{% else %}
+<form method="POST" action="{{ url_for('join_activity', activity_id=a['id']) }}">
+<button class="btn">Join Activity</button>
+</form>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endblock %}

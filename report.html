@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card wide">
+<h2>Report an Environmental Issue</h2>
+<p class="hint">Submit genuine local problems such as littering, illegal dumping, water wastage or damaged green spaces.</p>
+<form method="POST" enctype="multipart/form-data">
+    <label>Issue Title</label>
+    <input name="title" placeholder="Example: Garbage dumped near road" required>
+
+    <label>Description</label>
+    <textarea name="description" rows="5" required></textarea>
+
+    <label>Location</label>
+    <input name="location" placeholder="Area / landmark / address" required>
+
+    <div class="two">
+        <div><label>Latitude (optional)</label><input name="latitude"></div>
+        <div><label>Longitude (optional)</label><input name="longitude"></div>
+    </div>
+
+    <label>Photo (optional)</label>
+    <input type="file" name="image" accept="image/*">
+
+    <button class="btn">Submit Issue</button>
+</form>
+</div>
+{% endblock %}
